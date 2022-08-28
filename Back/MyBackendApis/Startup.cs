@@ -41,10 +41,7 @@ namespace MyBackendApis
                 options.ConnectionString = Configuration.GetConnectionString("Elmah");
             });
 
-            services.AddControllers(options =>
-            {
-                options.Filters.Add(new AuthorizeFilter());
-            });
+            services.AddControllers();
 
             services.AddSwaggerGen(c =>
             {

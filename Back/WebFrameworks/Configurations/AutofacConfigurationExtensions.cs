@@ -5,6 +5,7 @@ using Data.Contracts;
 using Data.Repositories;
 using Entities.Common;
 using Service.Services;
+using Service.Services.RequestUrl;
 
 namespace WebFrameworks.Configurations
 {
@@ -18,7 +19,7 @@ namespace WebFrameworks.Configurations
             var commonAssembly = typeof(SiteSettings).Assembly;
             var entitiesAssembly = typeof(IEntity).Assembly;
             var dataAssembly = typeof(ApplicationDbContext).Assembly;
-            var servicesAssembly = typeof(TestService).Assembly;
+            var servicesAssembly = typeof(RequestUrlService).Assembly;
 
             containerBuilder.RegisterAssemblyTypes(commonAssembly, entitiesAssembly, dataAssembly, servicesAssembly)
                 .AssignableTo<IScopedDependency>()

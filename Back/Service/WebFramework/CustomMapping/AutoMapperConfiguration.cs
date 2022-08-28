@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Linq;
 using System.Reflection;
+using Service.DTOs;
 using Service.WebFramework.CustomMapping;
 
 
@@ -16,17 +17,17 @@ namespace Services.WebFramework.CustomMapping
             //services.AddAutoMapper(assembly1, assembly2, assembly3);
             //See http://docs.automapper.org/en/stable/Configuration.html
             //And https://code-maze.com/automapper-net-core/
-           
 
-            //services.AddAutoMapper(config =>
-            //{
-            //    //config.CreateMap<ExamDtoTest, Exam>().ReverseMap();
-            //    config.AddCustomMappingProfile(typeof(PostDto).Assembly);
-            //    config.Advanced.BeforeSeal(configProvicer =>
-            //    {
-            //        configProvicer.CompileMappings();
-            //    });
-            //}, assemblies);
+
+            services.AddAutoMapper(config =>
+            {
+                //config.CreateMap<ExamDtoTest, Exam>().ReverseMap();
+                config.AddCustomMappingProfile(typeof(ReceivedRequestUtlDto).Assembly);
+                config.Advanced.BeforeSeal(configProvicer =>
+                {
+                    configProvicer.CompileMappings();
+                });
+            }, assemblies);
 
             #region Deprecated (Use AutoMapper Instance instead)
             //Mapper.Initialize(config =>
