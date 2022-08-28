@@ -9,10 +9,7 @@ namespace Service.DTOs
     {
         [Required]
         [Display(Name = "Main Address ")]
-        public Uri OriginalUrl { get; set; }
-
-        [Display(Name = "Created Short Address")]
-        [MaxLength(350)]
         public Uri FinalUrl { get; set; }
+        
     }
 }

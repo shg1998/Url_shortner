@@ -5,7 +5,7 @@ using Service.WebFramework.Api;
 
 namespace Service.DTOs
 {
-    public class ReceivedRequestUtlDto : BaseDto<ReceivedRequestUtlDto, RequestUrl>
+    public class ReceivedRequestUrlDto : BaseDto<ReceivedRequestUrlDto, RequestUrl>
     {
         [Required]
         [Display(Name = "Main Address ")]

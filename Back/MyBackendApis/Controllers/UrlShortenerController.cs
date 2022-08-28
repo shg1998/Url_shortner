@@ -9,6 +9,7 @@ using AutoMapper;
 using Common.Utilities;
 using Service.Contracts.RequestUrl;
 using Service.DTOs;
+using WebFrameworks.Api;
 using WebFrameworks.Filters;
 
 namespace MyBackendApis.Controllers
@@ -27,11 +28,21 @@ namespace MyBackendApis.Controllers
             _mapper = mapper;
         }
 
-        [HttpPost("get-url-short-link")]
-        public async Task<SentRequestUrlDto> GetUrlShortLink([FromBody] ReceivedRequestUtlDto urlDto, CancellationToken cancellationToken)
+        [HttpGet("get-url-short-link")]
+        public async Task<ActionResult<RequestUrlDto>> GetUrlShortLink(string url, CancellationToken cancellationToken)
         {
-            var urlReq = await _requestUrlService.GetShortUrl(urlDto, cancellationToken);
+            var uri = new Uri(url);
+            var urlReq = await _requestUrlService.GetShortUrl(uri, cancellationToken);
+            return Ok(urlReq);
+        }
+
+        [HttpGet("get-url-orig-link")]
+        public async Task<ApiResult<RequestUrlDto>> GetOriginalLink(string url, CancellationToken cancellationToken)
+        {
+            var uri = new Uri(url);
+            var urlReq = await _requestUrlService.GetOriginalUrl(uri, cancellationToken);
             return urlReq;
         }
+
     }
 }

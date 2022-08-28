@@ -22,7 +22,7 @@ namespace Services.WebFramework.CustomMapping
             services.AddAutoMapper(config =>
             {
                 //config.CreateMap<ExamDtoTest, Exam>().ReverseMap();
-                config.AddCustomMappingProfile(typeof(ReceivedRequestUtlDto).Assembly);
+                config.AddCustomMappingProfile(typeof(ReceivedRequestUrlDto).Assembly);
                 config.Advanced.BeforeSeal(configProvicer =>
                 {
                     configProvicer.CompileMappings();

@@ -77,6 +77,8 @@ namespace MyBackendApis
 
             app.UseHttpsRedirection();
 
+            app.UseCors(config => config.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
+
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
